@@ -1,0 +1,12 @@
+<div class="container py-5 px-4 my-5 bg-main-light rounded-3">
+
+    <h1 class="text-center text-danger">subCategories On This Category</h1>
+
+    <div class="row g-5 pt-4">
+        <div class="col-md-4 " *ngFor="let category of subCategoryData">
+            <div class="products cursor-pointer">
+                <h3 class="p-3 text-center text-main">{{category.name}}</h3>
+            </div>
+        </div>
+    </div>
+</div>

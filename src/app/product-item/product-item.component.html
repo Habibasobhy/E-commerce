@@ -1,0 +1,39 @@
+<div class="product px-2 py-4">
+    <a class="text-decoration-none" [routerLink]="['/productDetails',product.id]">
+        <img [src]="product.imageCover" class="w-100">
+        <p class="text-main">{{product.category.name}}</p>
+        <h2 class="h6">{{product.title | trim : 2}}</h2>
+        <div class="d-flex justify-content-between">
+            <span>{{product.price}} EGY</span>
+            <div>
+                <i class="fa fa-star rating-color"></i>
+                {{product.ratingsAverage}}
+            </div>
+        </div>
+    </a>
+
+    <div class="d-flex justify-content-between align-items-center mt-1 ">
+        <button class="btn bg-main w-75 add-btn text-white" (click)="addToCart(product.id)">Add to cart</button>
+
+        <!-- ~To add product to wishlist -->
+        <!-- lw al wishlist include al product.id yb2a al icon di mtzhr4 -->
+
+        <i *ngIf="!allWishlistData.includes($any(product.id))"
+        class="fa-regular fa-heart h3 cursor-pointer"
+         (click)="addProductToWishlist(product.id)">
+        </i>
+
+        <!-- ~To remove product to wishlist -->
+        <!-- lw al wishlist include al product.id yb2a al icon di tzhr -->
+
+        <i *ngIf="allWishlistData.includes($any(product.id))"
+        class="fa-solid fa-heart h3 cursor-pointer" style="color: #f50000;"
+         (click)="removeItemFromWishlist(product.id)">
+        </i>
+
+    </div>
+    
+</div>
+
+
+<!-- http://localhost:4200/home/productDetails   -->

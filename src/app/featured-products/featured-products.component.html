@@ -1,0 +1,16 @@
+<div class="container py-5 ">
+
+    <!-- searchKey = value of input -->
+    <input type="text" [(ngModel)]="searchKey" class="form-control w-75 mx-auto my-5 border-2" placeholder="Search....">
+
+    <div class="row">
+
+        <!-- hb3t ll searchPipe al allProduct ally hya Product[] + searchKey -->
+        <div class="col-md-3" *ngFor="let product of allProduct | searchPipe : searchKey">
+
+            <!-- [product] it is name of input in productItem.ts -->
+            <!-- "product" it is product in ngFor that looping on allProduct -->
+            <app-product-item [product] = "product"></app-product-item>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+.btn-update{
+    border: 1px solid var(--main-color);
+}
+
+
+.btn-update:hover{
+    background-color: var(--main-color);
+    color: #fff;
+    border-color: #fff;
+}
+
+
+.border-bottom-none{
+    border-bottom: none;
+}
+
+.add-border-bottom{
+    border-bottom : 1px solid #e5dfdf;
+}
+
+.btnClearCart{
+    border : 1px solid var(--main-color);
+    color: #000;
+    transition: 0.4s all;
+}
+
+.btnClearCart:hover{
+    color: #fff;
+    background-color: var(--main-color);
+}

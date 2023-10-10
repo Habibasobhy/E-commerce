@@ -1,0 +1,28 @@
+.li-nav-active{
+    background-color: var(--main-color);
+    color: #fff !important;
+    border-radius:10px;
+}
+
+.auth{
+    color: var(--main-color) !important;
+    font-weight: 600;
+}
+
+.auth:hover{
+    background-color: var(--main-color) !important;
+    font-weight: 600;
+    color: #fff !important;
+    border-radius:10px;
+    padding-inline: 5px !important;
+}
+
+.social-icons li a{
+    padding: 10px;
+    color: #000;
+    transition: var(--main-transition) color;
+}
+
+.social-icons li:hover a{
+    color: var(--main-color);
+}

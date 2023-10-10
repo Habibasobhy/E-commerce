@@ -1,0 +1,10 @@
+<div class="container-fluid py-4 ">
+    <owl-carousel-o [options]="customOptions" class="cursor-pointer">
+        <ng-container *ngFor="let slide of allCategories">
+            <ng-template carouselSlide>
+                <img [src]="slide.image" height="300" class="w-100">
+                <h4 class="text-center">{{slide.name}}</h4>
+            </ng-template>
+        </ng-container>
+    </owl-carousel-o>
+</div>

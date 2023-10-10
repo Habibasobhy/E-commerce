@@ -1,0 +1,89 @@
+<nav>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container">
+          <a class="navbar-brand" routerLink = "">
+            <img src="assets/images/freshcart-logo.svg" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+             <!-- show when user logged in -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="isLoggedIn">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" routerLink = "home" routerLinkActive="li-nav-active">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink = "/cart" routerLinkActive="li-nav-active">Cart</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink = "/wishlist" routerLinkActive="li-nav-active">wishlist</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink = "/products" routerLinkActive="li-nav-active">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink = "/categories" routerLinkActive="li-nav-active">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink = "/brands" routerLinkActive="li-nav-active">Brands</a>
+              </li>
+            </ul>
+
+
+            <ul class="ms-auto navbar-nav list-unstyled d-flex align-items-center gap-3 mb-lg-0">
+
+              <li class="nav-item" *ngIf="isLoggedIn">
+                <a class="nav-link position-relative" routerLink = "/cart">
+                  <i class="fa fa-cart-shopping fs-3"></i>
+                  <span class="badge bg-main position-absolute top-0 end-0">{{cartCount}}</span>
+                </a>
+              </li>
+
+              <div class="social-icons d-flex">
+                <li>
+                  <a href="https://www.instagram.com/" target = "_blank">
+                    <i class="fa-brands fa-instagram cursor-pointer"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/" target = "_blank">
+                    <i class="fa-brands fa-facebook cursor-pointer"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.twitter.com/" target = "_blank">
+                    <i class="fa-brands fa-twitter cursor-pointer"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/" target = "_blank">
+                    <i class="fa-brands fa-linkedin cursor-pointer"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/" target = "_blank">
+                    <i class="fa-brands fa-youtube cursor-pointer"></i>
+                  </a>
+                </li>
+                </div>
+                
+                <!-- show when user not logged in -->
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                  <a class="nav-link px-0 auth" routerLink="/signUp">Register</a>
+                </li>
+                
+                <!-- show when user not logged in -->
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                  <a class="nav-link px-0 auth" routerLink="/login">Login</a>
+                </li>
+                
+                <!-- show when user already logged in -->
+                <li (click)="logOut()" class="nav-item" *ngIf="isLoggedIn">
+                  <span class="nav-link px-0 cursor-pointer auth">LogOut</span>
+                </li>
+                </ul>
+          </div>
+        </div>
+      </nav>
+</nav>

@@ -1,0 +1,43 @@
+<div class="container p-5 my-5 bg-main-light rounded-3">
+    <!-- & when wishlist not empty -->
+    <div class="wishlistNotEmpty" *ngIf="allWishlist.count !=0">
+        <h1> All wish List</h1>
+
+        <h4>Total Items : 
+            <span class="text-main">{{allWishlist.count}}</span>
+        </h4>
+    </div>
+
+    <!-- & when wishlist empty -->
+    <div class="wishlistIsEmpty" *ngIf="allWishlist.count == 0">
+        <h1 class="text-danger text-center py-5"> Your wish List is Empty.</h1>
+    </div>
+    
+
+    <div class="row align-items-center py-3" 
+     *ngFor="let wishlist of allWishlist.data;
+     let last = last" [class]="last? 'border-bottom-none' : 'add-border-bottom'">
+
+        <div class="col-md-2">
+            <img [src]="wishlist.imageCover" alt="" class="w-100">
+        </div>
+
+        <div class="col-md-8">
+            <div class="item">
+                <h4>{{wishlist.title}}</h4>
+                <p class="text-main">{{wishlist.category.name}}</p>
+                <div class="d-flex align-items-center">
+                    <p class="text-main mb-0 me-3 fw-bolder">{{wishlist.price | currency :"EGP "}}</p>
+                    <button class="btn text-danger" (click)="removeItemFromWishlist(wishlist.id)">
+                        <i class="fa-regular fa-trash-can"></i>
+                        Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn bg-main btn-lg text-white" (click)="addProductToCart(wishlist.id)">Add to Cart</button>
+        </div>
+    </div>
+</div>

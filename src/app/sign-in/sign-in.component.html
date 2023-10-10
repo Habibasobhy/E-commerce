@@ -1,0 +1,55 @@
+<div class="container my-5">
+
+    <h2 class="mb-5">Login now :</h2>
+
+    <div *ngIf="apiError" class="alert alert-danger">
+
+        {{apiError}}  <!-- lw 3ndo error ytb3o -->
+        
+    </div>
+
+    <form [formGroup]="LoginForm" (ngSubmit)="login(LoginForm)">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control mt-2 mb-4">
+
+        <div *ngIf="LoginForm.get('email')?.errors && (LoginForm.get('email')?.touched || isNotValidForm)" class="alert alert-danger">
+            <p *ngIf="LoginForm.get('email')?.getError('required')" class="mb-0">Email is required</p>
+            <p *ngIf="LoginForm.get('email')?.getError('email')" class="mb-0"> Email Invalid</p>
+        </div>
+
+
+        <!-- ^==============================================================^  -->
+
+
+
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control mt-2 mb-4">
+
+
+        <div *ngIf="LoginForm.get('password')?.errors && (LoginForm.get('password')?.touched || isNotValidForm)" class="alert alert-danger">
+            <p *ngIf="LoginForm.get('password')?.getError('required')" class="mb-0">Password is required</p>
+            <p *ngIf="LoginForm.get('password')?.getError('pattern')" class="mb-0">Password Invalid</p>
+        </div>
+
+        <!-- ^==============================================================^  -->
+
+        <div class="d-flex justify-content-between">
+            <!-- Forget Password -->
+            <a class="h5 forgetPass cursor-pointer text-decoration-none" routerLink="/forgetPassword">forget your password ?</a>
+        
+            <!-- [disabled]="LoginForm.invalid" -->
+            <button type="submit" class="btn bg-main text-white px-4 fs-5 d-block ms-auto">
+        
+                <!-- * al icon htban lmma al is loading tb2a b true w al Login ht5tfy-->
+                <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>
+        
+        
+                <!-- * al Login htban lmma al is loading tb2a b false w al icon ht5tfy-->
+                <span *ngIf="!isLoading">Login</span>
+            </button>
+        </div>
+
+       
+    </form>
+</div>

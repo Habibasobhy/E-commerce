@@ -1,0 +1,24 @@
+<div class="container py-5 ">
+    <h2>Please enter your verification code</h2>
+
+    <div *ngIf="apiError" class="alert alert-danger apiError">
+
+        {{apiError}}  <!-- lw 3ndo error ytb3o -->
+        
+    </div>
+
+    <form [formGroup]="verifyCodeForm" (ngSubmit)="verifyCode(verifyCodeForm)">
+
+        <div class="form-floating mb-3">
+            <input type="tel" class="form-control" formControlName="resetCode" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">code</label>
+          </div>
+
+        <div class="alert alert-danger" *ngIf="verifyCodeForm.get('resetCode')?.errors && verifyCodeForm.get('resetCode')?.touched || isNotValidForm">
+            <p class="mb-0" *ngIf="verifyCodeForm.get('resetCode')?.getError('required')">Code is required</p>
+        </div>
+
+
+        <button type="submit" class="btn btn-lg bg-main text-white mt-2">Verify</button>
+    </form>
+</div>

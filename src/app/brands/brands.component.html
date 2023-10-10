@@ -1,0 +1,15 @@
+<div class="container py-5">
+    <h1 class="text-center text-main pb-5">All Brands</h1>
+
+    <div class="row g-4">
+        <div class="col-md-3" *ngFor="let brands of allBrands">
+            <div class="cursor-pointer products">
+                <a class="text-decoration-none text-dark " [routerLink]="['/specificBrand',brands._id]" (click)="getSpecificBrand(brands._id)">
+                    <img [src]="brands.image" class="w-100 rounded-top-2" alt = "brand-image">
+                    <h6 class="text-center fw-bolder pb-4 ">{{brands.name}}</h6>
+                </a>
+                    
+            </div>         
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <owl-carousel-o [options]="customOptions">
+                <ng-container *ngFor="let slide of productDetails.images">
+                    <ng-template carouselSlide>
+                        <img [src]="slide" class="w-100">
+                    </ng-template>
+                </ng-container>
+            </owl-carousel-o>
+        </div>
+        <div class="col-md-8">
+            <!-- Pipe -->
+            <!-- productDetails.title | uppercase -->
+            <h2>{{productDetails.title}}</h2>
+            <p class="text-muted">{{productDetails.description}}</p>
+            <div class="d-flex justify-content-between">
+                <span>{{productDetails.price | currency:'EGP'}}</span>
+                <div>
+                    <i class="fa fa-star rating-color"></i>
+                    {{productDetails.ratingsAverage}}
+                </div>
+            </div>
+
+            <div class="d-flex mt-3 justify-content-between">
+                <button class="btn bg-main w-75 add-btn text-white" (click)="addToCart(productDetails.id)">Add to
+                    cart</button>
+                
+                 <!-- ~To add product to wishlist -->
+        <!-- lw al wishlist include al product.id yb2a al icon di mtzhr4 -->
+        
+        <i *ngIf="!allWishlistData.includes($any(productDetails.id))"
+        class="fa-regular fa-heart h3 cursor-pointer"
+         (click)="addProductToWishlist(productDetails.id)">
+        </i>
+
+        <!-- ~To remove product to wishlist -->
+        <!-- lw al wishlist include al product.id yb2a al icon di tzhr -->
+
+        <i *ngIf="allWishlistData.includes($any(productDetails.id))"
+        class="fa-solid fa-heart h3 cursor-pointer" style="color: #f50000;"
+         (click)="removeItemFromWishlist(productDetails.id)">
+        </i>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="container p-5 my-5 bg-main-light rounded-3" 
+    *ngIf="cartDetails?.data?.products  && cartDetails.numOfCartItems !=0">
+    <div class="d-flex justify-content-between">
+        <h2>Cart Shop</h2>
+        <button class="btn btn-primary ">
+            <a class="fs-5 text-white text-decoration-none" [routerLink]="['checkout',cartDetails.data._id]">
+                Check Out
+            </a>
+        </button>
+    </div>
+    <div class="d-flex justify-content-between my-4">
+        <h4>Total Items : 
+            <span class="text-main">{{cartDetails.numOfCartItems}}</span>
+        </h4>
+
+        <h4>Total Price : 
+            <span class="text-main">{{cartDetails.data.totalCartPrice}}</span>
+        </h4>
+    </div>
+
+    <!-- Looping on product[] -->
+    <div class="row align-items-center py-3" 
+        *ngFor="let productCart of cartDetails.data.products;
+        let last = last" [class]="last? 'border-bottom-none' : 'add-border-bottom' ">
+
+        <div class="col-md-2">
+            <img [src]="productCart.product.imageCover" class="w-100">
+        </div>
+
+        <div class="col-md-8">
+            <div class="item">
+                <h4>{{productCart.product.title}}</h4>
+                <p class="text-main">{{productCart.product.category.name}}</p>
+                <div class="d-flex align-items-center">
+                    <p class="text-main mb-0 me-3">{{productCart.price | currency :"EGP "}}</p>
+                    <button class="btn text-danger" (click)="deleteItem(productCart.product.id)">
+                        <i class="fa-regular fa-trash-can"></i>
+                        Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-update" (click)="updateCount(productCart.count-1,productCart.product.id)">-</button>
+            <span class="mx-3">{{productCart.count}}</span>
+            <button class="btn btn-update" (click)="updateCount(productCart.count+1,productCart.product.id)">+</button>
+        </div>
+    </div>
+
+
+    <button class="btn btn-lg d-block mx-auto mt-5 btnClearCart" (click)="clearCart()">Clear Your Cart</button>
+</div>
+
+<!-- ^When cart is empty^ -->
+
+<!-- || isCartEmpty ==> 3l4an mmkn lw geet mn bra 3la al cart w hya fadya m4 hy5o4 3la al next hyd5il 3la el err  -->
+<div class="container py-5 my-5 bg-main-light rounded-3" *ngIf="cartDetails.numOfCartItems == 0 || isCartEmpty">
+    <h1 class="text-danger py-5 ps-5 fw-bolder">Your cart is empty.</h1>
+</div>
+
